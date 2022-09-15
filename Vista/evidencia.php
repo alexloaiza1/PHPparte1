@@ -21,6 +21,7 @@
                         
                         <div class="col-md-3">
                             <h1>Registro de Evidencia</h1>
+                            <h1>Cambio de prueba</h1>
                                 <form action="controlador/controlconexion.php" method="POST">
 
                                     <input type="text" class="form-control mb-3" name="Id" placeholder="cod_cliente">
