@@ -23,7 +23,7 @@
 
         function __construct(int $idEvidencia, string $titulo,string $descripcion, int $idtipoEvidencia, string $fechaCreacion, 
         string $fechaRegistroEvidencia,int $idAutor,string $observacion,string $estado,int $idcapitulo,
-         int $seccion, int $articulo, string $literal, int $numeral, int $paragrafo,string $latitud,string $longitud){ //Constructor con parametros
+         int $seccion, int $articulo, string $literal, int $numeral, int $paragrafo,string $latitud, string $longitud){ //Constructor con parametros
             $this->idEvidencia = $idEvidencia;
             $this->titulo = $titulo;
             $this->descripcion= $descripcion;

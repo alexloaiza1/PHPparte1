@@ -2,6 +2,52 @@
     include '../Modelo/Evidencia.php';
     include '../Controlador/ControlConexion.php';
     include '../Controlador/ControlEvidencia.php';
+    $bot = "";
+    if(isset($_POST['btn']))$bot = $_POST['btn'];
+    switch ($bot) {
+        case 'Guardar':
+
+            // LAS FECHAS SON EN FORMATE YYYY/MM/DD
+            $objEvidencia= new Evidencia(0,"Prueba","esto es una prueba",1,"2000/11/12","2014/12/23","1","prueba observacion","",1,2,33,"1",0,1,"10005","1225");
+            $objControlEvidencia = new ControlEvidencia($objEvidencia);
+            $objControlEvidencia->guardar();
+            break;
+        /*case 'Consultar':
+            $objEvidencia= new Evidencia($cod,"","","","");
+            $objControlEvidencia = new ControlEvidencia($objEvidencia);
+            $objEvidencia=$objControlEvidencia->consultar();
+            $nom=$objEvidencia->getNombre();
+            $tel=$objEvidencia->getTelefono();
+            $ema=$objEvidencia->getEmail();
+            $dir=$objEvidencia->getDireccion();
+            
+
+            //var_dump($objEvidencia);
+            break;
+
+        case 'Modificar':
+            $objEvidencia= new Evidencia($cod,$nom,$tel,$ema,$dir,$bot);
+            $objControlEvidencia = new ControlEvidencia($objEvidencia);
+            $objControlEvidencia->modificar();
+            break;
+
+        case 'Borrar':
+            $objEvidencia= new Evidencia($cod,$nom,$tel,$ema,$dir,$bot);
+            $objControlEvidencia = new ControlEvidencia($objEvidencia);
+            $objControlEvidencia->borrar();
+            break;
+        
+        case 'Listar':
+            $objEvidencia= new Evidencia($cod,$nom,$tel,$ema,$dir,$bot);
+            $objControlEvidencia = new ControlEvidencia($objEvidencia);
+            $mat=$objControlEvidencia->listar();
+            
+            break;*/
+        default:
+            # code...
+            break;
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +66,7 @@
                         <div class="col-md-3">
                             <h1>Registro de Evidencia</h1>
                             <h1>Cambio de prueba</h1>
-                                <form action="controlador/controlconexion.php" method="POST">
+                                <form action="evidencia.php" method="POST">
 
                                     <input type="text" class="form-control mb-3" name="Id" placeholder="cod_cliente">
                                     <input type="text" class="form-control mb-3" name="" placeholder="Nombre">
@@ -28,7 +74,27 @@
                                     <input type="text" class="form-control mb-3" name="emal" placeholder="Email">
                                     <input type="text" class="form-control mb-3" name="direccion" placeholder="Direccion">
                                     
-                                    <input type="submit" class="btn btn-primary">
+                                    <div class="row">
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-2">
+        <input type="submit" value="Guardar" name="btn"/>
+    </div>
+    <div class="col-sm-2">
+        <input type="submit" value="Consultar" name="btn"/>
+    </div> 
+    <div class="col-sm-2">
+        <input type="submit" value="Modificar" name="btn"/>
+    </div>     
+    <div class="col-sm-2">
+        <input type="submit" value="Borrar" name="btn"/>
+    </div> 
+    <div class="col-sm-2">
+        <input type="submit" value="Listar" name="btn"/>
+    </div>   
+    <div class="col-sm-1">
+    </div>  
+</div>
                                 </form>
                         </div>
 
@@ -47,21 +113,7 @@
                                 </thead>
 
                                 <tbody>
-                                        <?php
-                                            while($row=mysqli_fetch_array($query)){
-                                        ?>
-                                            <tr>
-                                                <th><?php  echo $row['codigo']?></th>
-                                                <th><?php  echo $row['nombre']?></th>
-                                                <th><?php  echo $row['telefono']?></th>
-                                                <th><?php  echo $row['emal']?></th>   
-                                                <th><?php  echo $row['direccion']?></th>     
-                                                <th><a href="actualizar.php?id=<?php echo $row['codigo'] ?>" class="btn btn-info">Editar</a></th>
-                                                <!--<th><a href="delete.php?id=<?php echo $row['codigo'] ?>" class="btn btn-danger">Eliminar</a></th>  --->                                     
-                                            </tr>
-                                        <?php 
-                                            }
-                                        ?>
+                                        
                                 </tbody>
                             </table>
                         </div>
