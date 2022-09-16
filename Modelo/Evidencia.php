@@ -19,7 +19,9 @@
         private string $longitud;
 
 
-
+// (int, string, string, int, string, 
+//string, int, string, string, int 
+//int int string, int, int, string, string)
 
         function __construct(int $idEvidencia, string $titulo,string $descripcion, int $idtipoEvidencia, string $fechaCreacion, 
         string $fechaRegistroEvidencia,int $idAutor,string $observacion,string $estado,int $idcapitulo,

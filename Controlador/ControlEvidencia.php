@@ -37,13 +37,28 @@
         }
 
         function modificar(){
-            $cod = $this->objEvidencia->getCodigo();
-            $nom = $this->objEvidencia->getNombre();
-            $tel = $this->objEvidencia->getTelefono();
-            $ema = $this->objEvidencia->getEmail();
-            $dir = $this->objEvidencia->getDireccion();
+            $idEvi = $this->objEvidencia->getIdEvidencia();
+            $titulo = $this->objEvidencia->getTitulo();
+            $descrip = $this->objEvidencia->getDescripcion();
+            $tipoEvi = $this->objEvidencia->getIdTipoEvidencia();
+            $fechacrea = $this->objEvidencia->getFechaCreacion();
+            $fecharegis = $this->objEvidencia->getFechaRegistroEvidencia();
+            $autor = $this->objEvidencia->getIdAutor();
+            $observacion = $this->objEvidencia->getObservacion();
+            $estado = $this->objEvidencia->getEstado();
+            $capitulo = $this->objEvidencia->getIdCapitulo();
+            $seccion = $this->objEvidencia->getSeccion();
+            $articulo = $this->objEvidencia->getArticulo();
+            $literal = $this->objEvidencia->getLiteral();
+            $numeral = $this->objEvidencia->getNumeral();
+            $paragrafo = $this->objEvidencia->getParagrafo();
+            $latitud = $this->objEvidencia->getLatitud();
+            $longitud = $this->objEvidencia->getLongitud();
 
-            $sql="UPDATE PERSONA SET NOMBRE='".$nom."',TELEFONO='".$tel."',EMAIL='".$ema."',DIRECCION='".$dir."' WHERE CODIGO='".$cod."'";
+            $sql="UPDATE evidencias SET titulo='".$titulo."',descripcion='".$descrip."',idTipoEvidencia='".$tipoEvi."',fechaCreacion='".$fechacrea."', 
+            fechaRegistro='".$fecharegis."', idAutor='".$autor."', observacion='".$observacion."', estado='".$estado."', idCapitulo='".$capitulo."', 
+            seccion='".$seccion."', articulo='".$articulo."', literal='".$literal."',numeral='".$numeral."', paragrafo='".$paragrafo."', latitud='".$latitud."', 
+            longitud='".$longitud."' WHERE idevidencia=".$idEvi."";
             $objControlConexion = new ControlConexion();
             $objControlConexion->abrirBd("localhost","root","","dbevidencias", 3306);
             $objControlConexion->ejecutarComandoSql($sql);
@@ -51,32 +66,45 @@
         }
 
         function borrar(){
-            $cod = $this->objEvidencia->getCodigo();
+            $cod = $this->objEvidencia->getIdEvidencia();
 
-            $sql="DELETE FROM PERSONA WHERE CODIGO='".$cod."'";
+            $sql="DELETE FROM evidencias WHERE idEvidencia='".$cod."'";
             $objControlConexion = new ControlConexion();
             $objControlConexion->abrirBd("localhost","root","","dbevidencias", 3306);
             $objControlConexion->ejecutarComandoSql($sql);
             $objControlConexion->cerrarBd();
         }
         function consultar(){
-            $cod = $this->objEvidencia->getCodigo();
+            $idEvi = $this->objEvidencia->getIdEvidencia();
 
-            $sql="SELECT * FROM PERSONA WHERE CODIGO='".$cod."'";
+            $sql="SELECT * FROM evidencias WHERE idEvidencia=".$idEvi."";
             $objControlConexion = new ControlConexion();
             $objControlConexion->abrirBd("localhost","root","","dbevidencias", 3306);
             $recordSet=$objControlConexion->ejecutarSelect($sql);
             if($row = $recordSet->fetch_array(MYSQLI_BOTH)){
-                $this->objEvidencia->setNombre($row['nombre']);
-                $this->objEvidencia->setTelefono($row['telefono']);
-                $this->objEvidencia->setEmail($row['email']);
-                $this->objEvidencia->setDireccion($row['direccion']);
+                $this->objEvidencia->setTitulo($row['titulo']);
+                $this->objEvidencia->setDescripcion($row['descripcion']);
+                $this->objEvidencia->setIdTipoEvidencia($row['idTipoEvidencia']);
+                $this->objEvidencia->setFechaCreacion($row['fechaCreacion']);
+                $this->objEvidencia->setFechaRegistroEvidencia($row['fechaRegistro']);
+                $this->objEvidencia->setIdAutor($row['idAutor']);
+                $this->objEvidencia->setObservacion($row['observacion']);
+                $this->objEvidencia->setEstado($row['estado']);
+                $this->objEvidencia->setIdCapitulo($row['idCapitulo']);
+                $this->objEvidencia->setSeccion($row['seccion']);
+                $this->objEvidencia->setArticulo($row['articulo']);
+                $this->objEvidencia->setLiteral($row['literal']);
+                $this->objEvidencia->setNumeral($row['numeral']);
+                $this->objEvidencia->setParagrafo($row['paragrafo']);
+                $this->objEvidencia->setLatitud($row['latitud']);
+                $this->objEvidencia->setLongitud($row['longitud']);
+
             }
             $objControlConexion->cerrarBd();
             return $this->objEvidencia;
         }
 
-        function listar(){
+       /* function listar(){
             $cod = $this->objEvidencia->getCodigo();
             $mat=[];
             $i=0;
@@ -97,6 +125,6 @@
             }
             $objControlConexion->cerrarBd();
             return $mat;
-        }
+        }*/
     }
 ?>

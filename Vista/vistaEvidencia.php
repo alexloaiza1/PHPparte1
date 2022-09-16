@@ -8,35 +8,33 @@
         case 'Guardar':
 
             // LAS FECHAS SON EN FORMATE YYYY/MM/DD
-            $objEvidencia= new Evidencia(0,"Prueba","esto es una prueba",1,"2000/11/12","2014/12/23","1","prueba observacion","",1,2,33,"1",0,1,"10005","1225");
+            $objEvidencia= new Evidencia(0,"Prueba","esto es una prueba",1,"2000/11/12","2014/12/23",1,"prueba observacion","",1,2,33,"1",0,1,"10005","1225");
             $objControlEvidencia = new ControlEvidencia($objEvidencia);
             $objControlEvidencia->guardar();
             break;
-        /*case 'Consultar':
-            $objEvidencia= new Evidencia($cod,"","","","");
+            
+        case 'Consultar':
+            $objEvidencia= new Evidencia(2,"","",0,"","",0,"","",0,0,0,"0",0,0,"0","0");
             $objControlEvidencia = new ControlEvidencia($objEvidencia);
             $objEvidencia=$objControlEvidencia->consultar();
-            $nom=$objEvidencia->getNombre();
-            $tel=$objEvidencia->getTelefono();
-            $ema=$objEvidencia->getEmail();
-            $dir=$objEvidencia->getDireccion();
-            
+            $nom=$objEvidencia->getIdEvidencia();
+
 
             //var_dump($objEvidencia);
             break;
 
         case 'Modificar':
-            $objEvidencia= new Evidencia($cod,$nom,$tel,$ema,$dir,$bot);
+            $objEvidencia= new Evidencia(2,"Modificado","esto es modificar",3,"2010/11/12","2020/12/23",1,"prueba modificar","",1,2,33,"1",0,1,"10005","1225");
             $objControlEvidencia = new ControlEvidencia($objEvidencia);
             $objControlEvidencia->modificar();
             break;
 
         case 'Borrar':
-            $objEvidencia= new Evidencia($cod,$nom,$tel,$ema,$dir,$bot);
+            $objEvidencia= new Evidencia(1,"","",0,"","",0,"","",0,0,0,"0",0,0,"0","0");
             $objControlEvidencia = new ControlEvidencia($objEvidencia);
             $objControlEvidencia->borrar();
             break;
-        
+        /*
         case 'Listar':
             $objEvidencia= new Evidencia($cod,$nom,$tel,$ema,$dir,$bot);
             $objControlEvidencia = new ControlEvidencia($objEvidencia);
@@ -66,9 +64,9 @@
                         <div class="col-md-3">
                             <h1>Registro de Evidencia</h1>
                             <h1>Cambio de prueba</h1>
-                                <form action="evidencia.php" method="POST">
+                                <form action="vistaEvidencia.php" method="POST">
 
-                                    <input type="text" class="form-control mb-3" name="Id" placeholder="cod_cliente">
+                                    <input type="text" class="form-control mb-3" name="Id" placeholder="cod_cliente" value="<?php echo $nom;?>">
                                     <input type="text" class="form-control mb-3" name="" placeholder="Nombre">
                                     <input type="text" class="form-control mb-3" name="telefono" placeholder="Telefono">
                                     <input type="text" class="form-control mb-3" name="emal" placeholder="Email">
