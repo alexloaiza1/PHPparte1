@@ -1,9 +1,7 @@
 <?php 
-    include("conexion.php");
-    $con=conectar();
-
-    $sql="SELECT *  FROM persona";
-    $query=mysqli_query($con,$sql);
+    include '../Modelo/Evidencia.php';
+    include '../Controlador/ControlConexion.php';
+    include '../Controlador/ControlEvidencia.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
