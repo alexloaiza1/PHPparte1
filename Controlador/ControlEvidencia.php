@@ -27,7 +27,7 @@
             $longitud = $this->objEvidencia->getLongitud();
 
             $sql="INSERT INTO evidencias VALUES('"."','".$titulo."','".$descrip."','".$tipoEvi."','".$fechacrea."','".$fecharegis.
-            "','".$autor."','".$observacion."','".null."','".$capitulo."','".$seccion."','".$articulo."','".$literal."','".$numeral."','".$paragrafo.
+            "','".$autor."','".$observacion."','".$estado."','".$capitulo."','".$seccion."','".$articulo."','".$literal."','".$numeral."','".$paragrafo.
             "','".$latitud."','".$longitud."')";
 
             $objControlConexion = new ControlConexion();
